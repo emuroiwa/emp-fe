@@ -1,3 +1,23 @@
-<p>
-  employee works!
-</p>
+  <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+      <div class="form-group">
+        <label>Employee Fullname</label>
+        <input name="EmployeeName" #EmployeeName="ngModel" [(ngModel)]="service.formData.EmployeeName" class="form-control" required>
+        <div class="validation-error" *ngIf="EmployeeName.invalid && EmployeeName.touched">This field is required.</div>
+      </div>
+
+      <div class="form-group">
+        <label>Employee Number</label>
+        <input name="StaffNumber" #StaffNumber="ngModel" [(ngModel)]="service.formData.StaffNumber" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label>Employee Email</label>
+        <input name="Email" #Email="ngModel" [(ngModel)]="service.formData.Email" class="form-control" type="email">
+      </div>
+
+      <input type="hidden" name="EmployeeID" #EmployeeID="ngModel" [(ngModel)]="service.formData.EmployeeID">
+
+      <div class="form-group">
+        <button type="submit" [disabled]="form.invalid" class="btn btn-primary">Save</button>
+      </div>
+  </form>
