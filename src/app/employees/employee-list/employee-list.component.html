@@ -1,3 +1,21 @@
-<p>
-  employee-list works!
-</p>
+<table class="table table-bordered mt-1">
+  <thead>
+    <tr>
+      <th scope="col">Employee Name</th>
+      <th scope="col">Staff Number</th>
+      <th scope="col">Email</th>
+      <th scope="col">Delete / Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let emp of service.list">
+      <td>{{emp.EmployeeName}}</td>
+      <td>{{emp.StaffNumber}}</td>
+      <td>{{emp.Email}}</td>
+      <td>
+        <button (click)="onDelete(emp.EmployeeID)" class="btn btn-danger">X</button> /
+        <button (click)="populateForm(emp)" class="btn btn-success">X</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
