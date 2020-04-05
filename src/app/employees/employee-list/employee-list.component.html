@@ -13,8 +13,8 @@
       <td>{{emp.StaffNumber}}</td>
       <td>{{emp.Email}}</td>
       <td>
-        <button (click)="onDelete(emp.EmployeeID)" class="btn btn-danger">X</button> /
-        <button (click)="populateForm(emp)" class="btn btn-success">X</button>
+        <button (click)="populateForm(emp)" class="btn btn-success">Edit</button>
+        <button (click)="onDelete(emp.EmployeeID)" class="btn btn-danger ml-1">Delete</button> 
       </td>
     </tr>
   </tbody>
