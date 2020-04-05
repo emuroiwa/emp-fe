@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from 'src/app/shared/employee.service';
 import { NgForm } from '@angular/forms';
-//import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-employee',
@@ -37,7 +36,7 @@ export class EmployeeComponent implements OnInit {
 
   insertRecord(form: NgForm) {
     this.service.postEmployee(form.value).subscribe(res => {
-      //this.toastr.success('Inserted successfully', 'EMP. Register');
+      alert('Saved successfully')
       this.resetForm(form);
       this.service.refreshList();
     });
@@ -45,7 +44,7 @@ export class EmployeeComponent implements OnInit {
 
   updateRecord(form: NgForm) {
     this.service.putEmployee(form.value).subscribe(res => {
-     // this.toastr.info('Updated successfully', 'EMP. Register');
+      alert('Updated successfully')
       this.resetForm(form);
       this.service.refreshList();
     });

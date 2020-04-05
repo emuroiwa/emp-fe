@@ -1,18 +1,28 @@
-  <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+  <form #form="ngForm" (submit)="f.form.valid && onSubmit(form)" autocomplete="off" #f="ngForm" novalidate>
       <div class="form-group">
         <label>Employee Fullname</label>
-        <input name="EmployeeName" #EmployeeName="ngModel" [(ngModel)]="service.formData.EmployeeName" class="form-control" required>
-        <div class="validation-error" *ngIf="EmployeeName.invalid && EmployeeName.touched">This field is required.</div>
+        <input name="EmployeeName" #EmployeeName="ngModel" [(ngModel)]="service.formData.EmployeeName" class="form-control" required maxlength="100">
+        <div class="validation-error"  *ngIf="f.submitted && EmployeeName.invalid" class="invalid-feedback">
+          <div *ngIf="EmployeeName.errors.required">Employee Name is required</div>
+      </div>
       </div>
 
       <div class="form-group">
         <label>Employee Number</label>
-        <input name="StaffNumber" #StaffNumber="ngModel" [(ngModel)]="service.formData.StaffNumber" class="form-control">
+        <input name="StaffNumber" #StaffNumber="ngModel" [(ngModel)]="service.formData.StaffNumber" class="form-control" required maxlength="100">
+        <div class="validation-error"  *ngIf="f.submitted && StaffNumber.invalid" class="invalid-feedback">
+          <div *ngIf="StaffNumber.errors.required">Staff Number is required</div>
+        </div>
+
       </div>
 
       <div class="form-group">
         <label>Employee Email</label>
-        <input name="Email" #Email="ngModel" [(ngModel)]="service.formData.Email" class="form-control" type="email">
+        <input name="Email" #Email="ngModel" [(ngModel)]="service.formData.Email" class="form-control" type="email" required email maxlength="255">
+        <div *ngIf="f.submitted && Email.invalid" class="invalid-feedback">
+          <div *ngIf="Email.errors.required">Email is required</div>
+          <div *ngIf="Email.errors.email">Email must be a valid email address</div>
+        </div>
       </div>
 
       <input type="hidden" name="EmployeeID" #EmployeeID="ngModel" [(ngModel)]="service.formData.EmployeeID">
